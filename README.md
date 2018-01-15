@@ -2,9 +2,9 @@
 
 # How to run with docker
 
-1. build container by executing _docker build -t oauthapi/oauth-challenge:latest ._
-2. run cointainer by executing _docker run -itd --name CharCounterAPI -p 4567:4567 oauthapi/oauth-challenge:latest_
-3. clean container _docker rm -f CharCounterAPI_
+1. build container by executing **docker build -t oauthapi/oauth-challenge:latest .**
+2. run cointainer by executing **docker run -itd --name CharCounterAPI -p 4567:4567 oauthapi/oauth-challenge:latest**
+3. clean container **docker rm -f CharCounterAPI**
 
 # Challenge instructions
 
