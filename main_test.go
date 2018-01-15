@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func TestPingRoute(t *testing.T) {
+func TestHealthCheckRoute(t *testing.T) {
 	router := setupRouter()
 
 	w := httptest.NewRecorder()

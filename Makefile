@@ -19,5 +19,7 @@
     run: 
 			$(GOBUILD) -o $(BINARY_NAME) -v ./...
 			./$(BINARY_NAME)
-    deps:  
+    deps: 
 			$(GODEPS)
+
+.PHONY: all test clean

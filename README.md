@@ -1,4 +1,12 @@
-# Instructions
+# OAuth Challenge
+
+# How to run with docker
+
+1. build container by executing _docker build -t oauthapi/oauth-challenge:latest ._
+2. run cointainer by executing _docker run -itd --name CharCounterAPI -p 4567:4567 oauthapi/oauth-challenge:latest_
+3. clean container _docker rm -f CharCounterAPI_
+
+# Challenge instructions
 
 Develop a webApi to make the test script located in the test directory to pass. You can not modify the tests, your solution has to make these test pass as they are.
 
@@ -13,6 +21,3 @@ To run the test script you will need to:
 Once you have completed the solution, please zip it and upload it to GDrive/Dropbox. Then share it with us by sending an email to eng.bootcamp@auth0.com including the link to the uploaded zip file.
 
 
-# How to run
-
-1.
