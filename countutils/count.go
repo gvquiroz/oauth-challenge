@@ -1,9 +1,11 @@
 package countutils
 
+import "strings"
+
 func CountChars(s string) map[string]int {
 	m := make(map[string]int)
 
-	str := s
+	str := strings.ToLower(s)
     for _, r := range str {
 		c := string(r)
 
