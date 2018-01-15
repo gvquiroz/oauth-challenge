@@ -1,4 +1,5 @@
 # OAuth Challenge
+[![codecov](https://codecov.io/gh/gvquiroz/oauth-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/gvquiroz/oauth-challenge) [![Build Status](https://travis-ci.org/gvquiroz/oauth-challenge.svg?branch=master)](https://travis-ci.org/gvquiroz/oauth-challenge)
 
 # How to run with docker
 
