@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/gvquiroz/oauth-challenge/countutils"
+)
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
@@ -14,6 +17,16 @@ func setupRouter() *gin.Engine {
 		c.Header("Content-Type", "application/json; charset=utf-8")
 		c.String(200, "")
 	})
+
+	r.GET("/count", func(c *gin.Context) {
+		c.Header("Content-Type", "application/json; charset=utf-8")
+
+		input := c.Query("input")
+		m := countutils.CountDuplicatedChars(input)
+
+		c.JSON(200, m)
+	})
+
 	return r
 }
 
