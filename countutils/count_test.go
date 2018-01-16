@@ -28,3 +28,25 @@ func TestCountDuplicatedCharactersWithLowerCaseOnMultipleChars(t *testing.T) {
 	assert.Equal(t, 1, m["o"])
 	assert.Equal(t, 1, m["e"])
 }
+
+func TestOmitAcents(t *testing.T) {
+	m := OmitAccent("papá")
+	assert.Equal(t, "papa", m)
+}
+
+func TestOmitDieresis(t *testing.T) {
+	m := OmitAccent("päpa")
+	assert.Equal(t, "papa", m)
+}
+
+func TestCountDuplicatedCharactersWithAcents(t *testing.T) {
+	m := CountChars("papá")
+	assert.Equal(t, 2, m["p"])
+	assert.Equal(t, 2, m["a"])
+}
+
+func TestCountDuplicatedCharactersWithDieresis(t *testing.T) {
+	m := CountChars("päpa")
+	assert.Equal(t, 2, m["p"])
+	assert.Equal(t, 2, m["a"])
+}

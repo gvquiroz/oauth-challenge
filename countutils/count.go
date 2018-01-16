@@ -1,12 +1,18 @@
 package countutils
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+	"golang.org/x/text/transform"
+	"golang.org/x/text/unicode/norm"
+	"golang.org/x/text/runes"
+)
 
 func CountChars(s string) map[string]int {
 	m := make(map[string]int)
-
-	str := strings.ToLower(s)
-    for _, r := range str {
+	stringLowerCase := strings.ToLower(s)
+	stringWithNoAcents := OmitAccent(stringLowerCase)
+    for _, r := range stringWithNoAcents {
 		c := string(r)
 
 		if (m[c] == 0) {
@@ -18,4 +24,10 @@ func CountChars(s string) map[string]int {
     }
 
 	return m
+}
+
+func OmitAccent(s string) string {
+    t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
+    r, _, _ := transform.String(t, s)
+    return r
 }
