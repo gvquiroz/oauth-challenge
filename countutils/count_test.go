@@ -6,7 +6,7 @@ import (
 )
 
 func TestCountDuplicatedCharacters(t *testing.T) {
-	m := CountChars("hello")
+	m := CountDuplicatedChars("hello")
 	assert.Equal(t, 1, m["h"])
 	assert.Equal(t, 2, m["l"])
 	assert.Equal(t, 1, m["o"])
@@ -14,7 +14,7 @@ func TestCountDuplicatedCharacters(t *testing.T) {
 }
 
 func TestCountDuplicatedCharactersWithLowerCase(t *testing.T) {
-	m := CountChars("heLlo")
+	m := CountDuplicatedChars("heLlo")
 	assert.Equal(t, 1, m["h"])
 	assert.Equal(t, 2, m["l"])
 	assert.Equal(t, 1, m["o"])
@@ -22,7 +22,7 @@ func TestCountDuplicatedCharactersWithLowerCase(t *testing.T) {
 }
 
 func TestCountDuplicatedCharactersWithLowerCaseOnMultipleChars(t *testing.T) {
-	m := CountChars("HEllO")
+	m := CountDuplicatedChars("HEllO")
 	assert.Equal(t, 1, m["h"])
 	assert.Equal(t, 2, m["l"])
 	assert.Equal(t, 1, m["o"])
@@ -40,13 +40,13 @@ func TestOmitDieresis(t *testing.T) {
 }
 
 func TestCountDuplicatedCharactersWithAcents(t *testing.T) {
-	m := CountChars("papá")
+	m := CountDuplicatedChars("papá")
 	assert.Equal(t, 2, m["p"])
 	assert.Equal(t, 2, m["a"])
 }
 
 func TestCountDuplicatedCharactersWithDieresis(t *testing.T) {
-	m := CountChars("päpa")
+	m := CountDuplicatedChars("päpa")
 	assert.Equal(t, 2, m["p"])
 	assert.Equal(t, 2, m["a"])
 }
@@ -70,7 +70,7 @@ func TestRemoveUnwantedQuestionMark(t *testing.T) {
 }
 
 func TestCountDuplicatedCharactersWithExclamationMarks(t *testing.T) {
-	m := CountChars("päpa!")
+	m := CountDuplicatedChars("päpa!")
 	assert.Equal(t, 2, m["p"])
 	assert.Equal(t, 2, m["a"])
 
@@ -78,9 +78,14 @@ func TestCountDuplicatedCharactersWithExclamationMarks(t *testing.T) {
 }
 
 func TestCountDuplicatedCharactersWithQuestionMarks(t *testing.T) {
-	m := CountChars("päpa?")
+	m := CountDuplicatedChars("päpa?")
 	assert.Equal(t, 2, m["p"])
 	assert.Equal(t, 2, m["a"])
 
 	assert.Equal(t, 0, m["?"])
+}
+
+func TestNormalizeString(t *testing.T) {
+	m := Normalize("päpa!?")
+	assert.Equal(t, "papa", m)
 }

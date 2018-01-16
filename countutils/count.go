@@ -8,17 +8,15 @@ import (
 	"golang.org/x/text/unicode/norm"
 )
 
-func CountChars(s string) map[string]int {
+func CountDuplicatedChars(s string) map[string]int {
 	m := make(map[string]int)
 
-	// string process pipeline 
-	// transform to lower case - remove acents, question marks and exclamation marks
 	stringLowerCase := strings.ToLower(s)
-	stringWithNoAcents := OmitAccent(stringLowerCase)
-	stringWithoutQuestionMark := RemoveUnwantedSymbols(stringWithNoAcents, "?")
-	stringToCount := RemoveUnwantedSymbols(stringWithoutQuestionMark, "!")
 
-    for _, r := range stringToCount {
+	// remove acents, question marks and exclamation marks
+	normalizedString := Normalize(stringLowerCase)
+
+    for _, r := range normalizedString {
 		c := string(r)
 
 		if (m[c] == 0) {
@@ -41,4 +39,13 @@ func OmitAccent(s string) string {
 func RemoveUnwantedSymbols(s string, symbol string) string {
 	t := strings.Replace(s, symbol, "", -1)
 	return t
+}
+
+func Normalize(s string) string {
+
+	stringWithNoAcents := OmitAccent(s)
+	stringWithoutQuestionMarks := RemoveUnwantedSymbols(stringWithNoAcents, "?")
+	stringResult := RemoveUnwantedSymbols(stringWithoutQuestionMarks, "!")
+
+	return stringResult
 }
