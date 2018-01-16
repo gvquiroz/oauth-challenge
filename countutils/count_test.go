@@ -50,3 +50,37 @@ func TestCountDuplicatedCharactersWithDieresis(t *testing.T) {
 	assert.Equal(t, 2, m["p"])
 	assert.Equal(t, 2, m["a"])
 }
+
+func TestRemoveUnwantedSymbols(t *testing.T) {
+	exclamationMark := "!"
+	m := RemoveUnwantedSymbols("papa!",exclamationMark)
+	assert.Equal(t, "papa", m)
+}
+
+func TestRemoveMultipleUnwantedSymbols(t *testing.T) {
+	exclamationMark := "!"
+	m := RemoveUnwantedSymbols("papa!!",exclamationMark)
+	assert.Equal(t, "papa", m)
+}
+
+func TestRemoveUnwantedQuestionMark(t *testing.T) {
+	questionMark := "?"
+	m := RemoveUnwantedSymbols("papa?",questionMark)
+	assert.Equal(t, "papa", m)
+}
+
+func TestCountDuplicatedCharactersWithExclamationMarks(t *testing.T) {
+	m := CountChars("päpa!")
+	assert.Equal(t, 2, m["p"])
+	assert.Equal(t, 2, m["a"])
+
+	assert.Equal(t, 0, m["!"])
+}
+
+func TestCountDuplicatedCharactersWithQuestionMarks(t *testing.T) {
+	m := CountChars("päpa?")
+	assert.Equal(t, 2, m["p"])
+	assert.Equal(t, 2, m["a"])
+
+	assert.Equal(t, 0, m["?"])
+}

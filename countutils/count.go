@@ -10,9 +10,15 @@ import (
 
 func CountChars(s string) map[string]int {
 	m := make(map[string]int)
+
+	// string process pipeline 
+	// transform to lower case - remove acents, question marks and exclamation marks
 	stringLowerCase := strings.ToLower(s)
 	stringWithNoAcents := OmitAccent(stringLowerCase)
-    for _, r := range stringWithNoAcents {
+	stringWithoutQuestionMark := RemoveUnwantedSymbols(stringWithNoAcents, "?")
+	stringToCount := RemoveUnwantedSymbols(stringWithoutQuestionMark, "!")
+
+    for _, r := range stringToCount {
 		c := string(r)
 
 		if (m[c] == 0) {
@@ -30,4 +36,9 @@ func OmitAccent(s string) string {
     t := transform.Chain(norm.NFD, runes.Remove(runes.In(unicode.Mn)), norm.NFC)
     r, _, _ := transform.String(t, s)
     return r
+}
+
+func RemoveUnwantedSymbols(s string, symbol string) string {
+	t := strings.Replace(s, symbol, "", -1)
+	return t
 }
