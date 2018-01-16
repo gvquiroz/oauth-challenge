@@ -29,16 +29,6 @@ func TestCountDuplicatedCharactersWithLowerCaseOnMultipleChars(t *testing.T) {
 	assert.Equal(t, 1, m["e"])
 }
 
-func TestOmitAcents(t *testing.T) {
-	m := OmitAccent("papá")
-	assert.Equal(t, "papa", m)
-}
-
-func TestOmitDieresis(t *testing.T) {
-	m := OmitAccent("päpa")
-	assert.Equal(t, "papa", m)
-}
-
 func TestCountDuplicatedCharactersWithAcents(t *testing.T) {
 	m := CountDuplicatedChars("papá")
 	assert.Equal(t, 2, m["p"])
@@ -49,24 +39,6 @@ func TestCountDuplicatedCharactersWithDieresis(t *testing.T) {
 	m := CountDuplicatedChars("päpa")
 	assert.Equal(t, 2, m["p"])
 	assert.Equal(t, 2, m["a"])
-}
-
-func TestRemoveUnwantedSymbols(t *testing.T) {
-	exclamationMark := "!"
-	m := RemoveUnwantedSymbols("papa!",exclamationMark)
-	assert.Equal(t, "papa", m)
-}
-
-func TestRemoveMultipleUnwantedSymbols(t *testing.T) {
-	exclamationMark := "!"
-	m := RemoveUnwantedSymbols("papa!!",exclamationMark)
-	assert.Equal(t, "papa", m)
-}
-
-func TestRemoveUnwantedQuestionMark(t *testing.T) {
-	questionMark := "?"
-	m := RemoveUnwantedSymbols("papa?",questionMark)
-	assert.Equal(t, "papa", m)
 }
 
 func TestCountDuplicatedCharactersWithExclamationMarks(t *testing.T) {
@@ -83,9 +55,4 @@ func TestCountDuplicatedCharactersWithQuestionMarks(t *testing.T) {
 	assert.Equal(t, 2, m["a"])
 
 	assert.Equal(t, 0, m["?"])
-}
-
-func TestNormalizeString(t *testing.T) {
-	m := Normalize("päpa!?")
-	assert.Equal(t, "papa", m)
 }
