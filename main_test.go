@@ -54,7 +54,6 @@ func TestCountWithAcents(t *testing.T) {
 
 	assert.Equal(t, 200, w.Code)
 
-	// return empty json
 	assert.Equal(t, `{"a":2,"p":2}` , w.Body.String())
 	assert.Equal(t, strings.Contains("application/json; charset=utf-8",w.Header().Get("ContentType")), true, "Content type must be application json")
 }
@@ -68,7 +67,6 @@ func TestCountWithDieresis(t *testing.T) {
 
 	assert.Equal(t, 200, w.Code)
 
-	// return empty json
 	assert.Equal(t, `{"a":2,"p":2}` , w.Body.String())
 	assert.Equal(t, strings.Contains("application/json; charset=utf-8",w.Header().Get("ContentType")), true, "Content type must be application json")
 }
@@ -82,7 +80,6 @@ func TestCountWithSymbols(t *testing.T) {
 
 	assert.Equal(t, 200, w.Code)
 
-	// return empty json
 	assert.Equal(t, `{"a":2,"p":2}` , w.Body.String())
 	assert.Equal(t, strings.Contains("application/json; charset=utf-8",w.Header().Get("ContentType")), true, "Content type must be application json")
 }
