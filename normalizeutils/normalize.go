@@ -20,7 +20,7 @@ func RemoveUnwantedSymbols(s string, symbol string) string {
 }
 
 func Normalize(s string) string {
-
+	
 	l := strings.ToLower(s)
 	o := OmitAccent(l)
 	q := RemoveUnwantedSymbols(o, "?")
