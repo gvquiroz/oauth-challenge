@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gvquiroz/oauth-challenge/countutils"
-	"github.com/djimenez/iconv-go"
 )
 
 func setupRouter() *gin.Engine {
@@ -23,8 +22,7 @@ func setupRouter() *gin.Engine {
 		c.Header("Content-Type", "application/json; charset=utf-8")
 
 		input := c.Query("input")
-		output,_ := iconv.ConvertString(input, "latin1", "utf-8")
-		result := countutils.CountDuplicatedChars(output)
+		result := countutils.CountDuplicatedChars(input)
 
 		c.JSON(200, result)
 	})

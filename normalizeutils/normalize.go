@@ -6,6 +6,8 @@ import (
 	"golang.org/x/text/runes"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
+	"github.com/djimenez/iconv-go"
+	"unicode/utf8"
 )
 
 func OmitAccent(s string) string {
@@ -20,8 +22,12 @@ func RemoveUnwantedSymbols(s string, symbol string) string {
 }
 
 func Normalize(s string) string {
-	
-	l := strings.ToLower(s)
+	input := s;
+	if(!utf8.ValidString(s)){
+		input, _ = iconv.ConvertString(input, "latin1", "utf-8")
+	}
+
+	l := strings.ToLower(input)
 	o := OmitAccent(l)
 	q := RemoveUnwantedSymbols(o, "?")
 	result := RemoveUnwantedSymbols(q, "!")
