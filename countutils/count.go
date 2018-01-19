@@ -1,28 +1,25 @@
 package countutils
 
 import (
-	"strings"
 	"github.com/gvquiroz/oauth-challenge/normalizeutils"
 )
 
 func CountDuplicatedChars(s string) map[string]int {
-	m := make(map[string]int)
+	resultMap := make(map[string]int)
 
-	stringLowerCase := strings.ToLower(s)
-
-	// remove acents, question marks and exclamation marks
-	normalizedString := normalizeutils.Normalize(stringLowerCase)
+	// lower case - remove acents, question marks and exclamation marks
+	normalizedString := normalizeutils.Normalize(s)
 
     for _, r := range normalizedString {
-		c := string(r)
+		char := string(r)
 
-		if (m[c] == 0) {
-			m[c] = 1
+		if (resultMap[char] == 0) {
+			resultMap[char] = 1
 		} else {
-			v := m[c]
-			m[c] = v + 1
+			v := resultMap[char]
+			resultMap[char] = v + 1
 		}
     }
 
-	return m
+	return resultMap
 }

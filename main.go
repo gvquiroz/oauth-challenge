@@ -22,9 +22,9 @@ func setupRouter() *gin.Engine {
 		c.Header("Content-Type", "application/json; charset=utf-8")
 
 		input := c.Query("input")
-		m := countutils.CountDuplicatedChars(input)
+		result := countutils.CountDuplicatedChars(input)
 
-		c.JSON(200, m)
+		c.JSON(200, result)
 	})
 
 	return r

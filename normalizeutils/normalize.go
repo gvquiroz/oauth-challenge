@@ -21,9 +21,10 @@ func RemoveUnwantedSymbols(s string, symbol string) string {
 
 func Normalize(s string) string {
 
-	stringWithNoAcents := OmitAccent(s)
-	stringWithoutQuestionMarks := RemoveUnwantedSymbols(stringWithNoAcents, "?")
-	stringResult := RemoveUnwantedSymbols(stringWithoutQuestionMarks, "!")
+	l := strings.ToLower(s)
+	o := OmitAccent(l)
+	q := RemoveUnwantedSymbols(o, "?")
+	result := RemoveUnwantedSymbols(q, "!")
 
-	return stringResult
+	return result
 }

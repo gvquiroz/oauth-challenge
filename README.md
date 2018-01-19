@@ -7,6 +7,10 @@
 2. run cointainer by executing **docker run -itd --name CharCounterAPI -p 4567:4567 oauthapi/oauth-challenge:latest**
 3. clean container **docker rm -f CharCounterAPI**
 
+# How to run with go (1.9.2) environment
+
+1. To install deps execute **make deps**
+1. To run tests and build execute **make**
 # Challenge instructions
 
 Develop a webApi to make the test script located in the test directory to pass. You can not modify the tests, your solution has to make these test pass as they are.
