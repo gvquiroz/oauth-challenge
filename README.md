@@ -1,6 +1,5 @@
 # OAuth Challenge
 [![codecov](https://codecov.io/gh/gvquiroz/oauth-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/gvquiroz/oauth-challenge) [![Build Status](https://travis-ci.org/gvquiroz/oauth-challenge.svg?branch=master)](https://travis-ci.org/gvquiroz/oauth-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/98c015dc86ede613332e/maintainability)](https://codeclimate.com/github/gvquiroz/oauth-challenge/maintainability)
-
 # How to run with docker
 
 1. build container by executing **docker build -t oauthapi/oauth-challenge:latest .**
